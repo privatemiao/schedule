@@ -1,0 +1,58 @@
+<h3>Person - {{user.Name}}</h3>
+<div class="row">
+	<a href="" data-ng-click="personController.setDate()">{{date}}</a>
+	<i class="glyphicon glyphicon-floppy-disk pull-right" style="cursor: pointer;" data-ng-click="personController.save();"></i>
+	<i class="glyphicon glyphicon-plus pull-right" style="cursor: pointer; margin-right: 10px;" data-ng-click="personController.newTask();"></i>
+	<br /> <br />
+</div>
+<div class="row">
+	<div class="well col-xs-12">
+		<div class="list-group">
+			
+			<div class="list-group-item" data-ng-repeat="task in tasks" data-ng-class="task.company.Colour">
+				<div class="row">
+					<div class="col-md-10">
+						<div class="list-group-item-heading">
+							<div class="row">
+								<div class="col-md-8">
+									<label>Company: 
+									</label>
+										<select class="form-control" data-ng-model="task.company" data-ng-options="company as company.Name for company in companies track by company.Id" data-ng-change="personController.changeCompany($index)"></select>
+								</div>
+								<div class="col-md-4">
+									<label for="">Status: 
+									</label>
+										<select class="form-control" data-ng-model="task.Status" data-ng-options="o as o for o in status"></select>
+								</div>
+							</div>
+						</div>
+						<div class="list-group-item-text">
+							<div class="row">
+								<div class="col-md-8">
+									<label for="">Description: </label>
+									<textarea class="form-control" cols="30" rows="1" data-ng-model="task.Description"></textarea>
+								</div>
+								<div class="col-md-4">
+									<label for="">Billable: </label>
+									<select class="form-control" data-ng-model="task.Billable" data-ng-options="o as o for o in [true, false]"></select>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<i class="glyphicon glyphicon-chevron-up" style="cursor: pointer;" data-ng-click="personController.move($index, -1)"></i> 
+						<i class="glyphicon glyphicon-chevron-down" style="cursor: pointer;" data-ng-click="personController.move($index, +1)"></i> 
+						<i class="glyphicon glyphicon-plus" style="cursor: pointer; margin-left: 10px;" data-ng-click="personController.newTask($index)"></i>
+						<i class="glyphicon glyphicon-minus" style="cursor: pointer;" data-ng-click="personController.deleteTask($index)"></i>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			
+			
+			
+		</div>
+	</div>
+</div>

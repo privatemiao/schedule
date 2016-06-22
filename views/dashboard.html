@@ -1,0 +1,18 @@
+<h3>Dashboard</h3>
+<div class="row">
+	<a href="" data-ng-click="dashboardController.setDate()">{{date}}</a><br /><br />
+</div>
+<div class="row">
+	<div class="card-left well col-xs-12 col-md-6" data-ng-repeat="user in users">
+		<div>
+			<a data-ng-href="#/person/{{user.Id}}/{{date}}">{{user.Name}}</a>
+		</div>
+		<ul class="list-group">
+			<li class="list-group-item" data-ng-repeat="task in user.tasks" data-ng-class="task.company.Colour">
+				{{task.Description}}
+				<span class="badge">{{task.Billable}}</span>
+				<span class="badge">{{task.Status}}</span>
+			</li>
+		</ul>
+	</div>
+</div>
